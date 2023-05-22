@@ -1,0 +1,53 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">BasketballGameGallery</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/admin" class="nav-link" routerLink="admin">Admin Page</a>
+      </li>
+      <li class="nav-item" *ngIf="showModeratorBoard">
+        <a href="/mod" class="nav-link" routerLink="mod">Moderator Page</a>
+      </li>
+      <li class="nav-item">
+        <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User Panel</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="teams" class="nav-link">View Team</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addteam" class="nav-link">Add New Team</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="players" class="nav-link">View Players</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addplayer" class="nav-link">Add New Player</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="matches" class="nav-link">View Matches</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="addmatch" class="nav-link">Add New Match</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Register Now!</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Log In</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
